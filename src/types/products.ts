@@ -1,0 +1,53 @@
+export interface ProductType {
+	id: number;
+	name0: string;
+	perex0: string;
+	description0: string;
+	price: string;
+	currency: string;
+	old_price: number;
+	dph: number;
+	product_type: string;
+	code: null | number;
+	ean: null | string;
+	manufacturer: null | string;
+	setting: number;
+	action: number;
+	news: number;
+	topseller: number;
+	hp: number;
+	related: null;
+	store: number;
+	availability: number;
+	priority: number;
+	timestamp: string;
+	uri0: string;
+	quantity: number;
+	customer_id: number;
+	published: number;
+	region: string;
+	district: string;
+	country: string;
+	city: string;
+	postal: string;
+	hide_reason: null | string;
+	delete_reason: null | string;
+	unit_id: number;
+	shipping_available: number;
+	pricing_type: string;
+	sold: number;
+	expiration_date: string;
+	old_expiration_date: null;
+	expiration_notification_sent_datetime: null;
+	waste_category_id: null;
+	language: string;
+	total_view_count: number;
+	hidden?: boolean;
+	fradulent?: boolean;
+	reason?: string;
+}
+
+export type ProductsSliceType = {
+	fetchedProducts: ProductType[];
+	checkedProducts: ProductType[];
+};
