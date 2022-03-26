@@ -1,7 +1,9 @@
 import React from 'react';
 
-function App() {
-	return <div>Cykl Admin App</div>;
-}
+import OffersPage from 'pages/offers-page';
+
+const App = () => {
+	return <OffersPage />;
+};
 
 export default App;
