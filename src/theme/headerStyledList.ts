@@ -1,21 +1,19 @@
 import styled from 'styled-components';
-import { color, font } from 'theme';
+import { color } from 'theme';
 
-export const SortByList = styled.ul`
+export const HeaderList = styled.ul`
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	font-size: ${font.large};
-	font-weight: ${font.bold};
-	margin-right: 4rem;
+	margin-right: 3.6rem;
 `;
 
-export const SortByListItemTitle = styled.li`
+export const HeaderListItemTitle = styled.li`
 	display: inline;
 	color: color.secondaryColor;
 `;
 
-export const SortByListItem = styled.li<{ active?: boolean }>`
+export const HeaderListItem = styled.li<{ active: boolean }>`
 	display: inline;
 	margin: 0 0.6rem;
 	cursor: pointer;

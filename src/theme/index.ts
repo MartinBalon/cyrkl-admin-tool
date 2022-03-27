@@ -3,9 +3,9 @@ export const color = {
 	primaryColor: '#FFF',
 	secondaryColor: '#202020',
 	secondaryColorLight: '#A0A0A0',
-	warningColor: 'yellow',
-	successColor: 'green',
-	errorColor: 'red',
+	warningColor: '#d7cd09',
+	successColor: '#09a069',
+	errorColor: '#e43703',
 };
 
 export const font = {

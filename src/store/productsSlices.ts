@@ -20,9 +20,24 @@ export const productsSlice = createSlice({
 		setSort: (state, action: PayloadAction<string>) => {
 			state.sort = action.payload;
 		},
+		setDisplay: (state, action: PayloadAction<string>) => {
+			state.display = action.payload;
+		},
+		setIncludeHidden: state => {
+			state.includeHidden = !state.includeHidden;
+		},
+		setFraudScan: state => {
+			state.fraudScan = !state.fraudScan;
+		},
 	},
 });
 
-export const { getAllProducts, setSort } = productsSlice.actions;
+export const {
+	getAllProducts,
+	setSort,
+	setDisplay,
+	setIncludeHidden,
+	setFraudScan,
+} = productsSlice.actions;
 
 export default productsSlice;

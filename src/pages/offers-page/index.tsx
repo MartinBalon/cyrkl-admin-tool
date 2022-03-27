@@ -13,13 +13,13 @@ const OffersPage = () => {
 	const dispatch = useDispatch();
 	const { products } = useSelector((state: RootState) => state.products);
 	const { sort } = useSelector((state: RootState) => state.products);
+	const { display } = useSelector((state: RootState) => state.products);
 	const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
 	const [paginatedProducts, setPagionatedProducts] = useState<ProductType[]>(
 		[]
 	);
 	const [pagination, setPagination] = useState(8);
 	const [currentPage, setCurrentPage] = useState(1);
-	const [display, setDisplay] = useState('all');
 	const [includeHiddenOffers, setIncludeHiddenOffers] = useState(true);
 
 	const [fetchingError, setFetchingError] = useState('');

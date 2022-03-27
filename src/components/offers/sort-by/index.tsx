@@ -2,16 +2,20 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store';
 import { setSort } from 'store/productsSlices';
-import { SortByList, SortByListItem, SortByListItemTitle } from './styled';
+import {
+	HeaderList,
+	HeaderListItem,
+	HeaderListItemTitle,
+} from 'theme/headerStyledList';
 
 const SortBy = () => {
 	const { sort } = useSelector((state: RootState) => state.products);
 	const dispatch = useDispatch();
 
 	return (
-		<SortByList>
-			<SortByListItemTitle>Sort by:</SortByListItemTitle>
-			<SortByListItem
+		<HeaderList>
+			<HeaderListItemTitle>Sort by:</HeaderListItemTitle>
+			<HeaderListItem
 				active={sort === 'latest' || sort === 'oldest'}
 				onClick={() =>
 					sort === 'latest'
@@ -20,8 +24,8 @@ const SortBy = () => {
 				}
 			>
 				Date
-			</SortByListItem>
-			<SortByListItem
+			</HeaderListItem>
+			<HeaderListItem
 				active={sort === 'most-expensive' || sort === 'cheapest'}
 				onClick={() =>
 					sort === 'most-expensive'
@@ -30,8 +34,8 @@ const SortBy = () => {
 				}
 			>
 				Price
-			</SortByListItem>
-		</SortByList>
+			</HeaderListItem>
+		</HeaderList>
 	);
 };
 
