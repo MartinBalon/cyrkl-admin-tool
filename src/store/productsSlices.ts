@@ -3,8 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductsSliceType, ProductType } from 'types/products';
 
 const initialProductsState: ProductsSliceType = {
-	fetchedProducts: [],
-	checkedProducts: [],
+	products: [],
 };
 
 export const productsSlice = createSlice({
@@ -12,14 +11,11 @@ export const productsSlice = createSlice({
 	initialState: initialProductsState,
 	reducers: {
 		getAllProducts: (state, action: PayloadAction<ProductType[]>) => {
-			state.fetchedProducts = action.payload;
-		},
-		filterProducts: (state, action: PayloadAction<ProductType[]>) => {
-			state.checkedProducts = action.payload;
+			state.products = action.payload;
 		},
 	},
 });
 
-export const { getAllProducts, filterProducts } = productsSlice.actions;
+export const { getAllProducts } = productsSlice.actions;
 
 export default productsSlice;

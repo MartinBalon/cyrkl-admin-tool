@@ -12,9 +12,7 @@ import OfferList from 'components/offers/offer-list/OfferList';
 
 const OffersPage = () => {
 	const dispatch = useDispatch();
-	const products = useSelector(
-		(state: RootState) => state.products.fetchedProducts
-	);
+	const { products } = useSelector((state: RootState) => state.products);
 	const [fetchingError, setFetchingError] = useState('');
 
 	useEffect(() => {
@@ -26,6 +24,7 @@ const OffersPage = () => {
 				setFetchingError(error);
 			}
 		);
+		console.log('fetching data from api');
 	}, []);
 
 	return (

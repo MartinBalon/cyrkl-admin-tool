@@ -12,7 +12,9 @@ const OfferList = ({ products }: OfferListPropst) => {
 			{!products && 'no products'}
 			{products &&
 				products.length > 0 &&
-				products.map((product: ProductType) => <Offer key={product.id} />)}
+				products.map((product: ProductType) => (
+					<Offer key={product.id} product={product} />
+				))}
 		</>
 	);
 };

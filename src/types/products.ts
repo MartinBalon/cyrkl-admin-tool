@@ -48,6 +48,5 @@ export interface ProductType {
 }
 
 export type ProductsSliceType = {
-	fetchedProducts: ProductType[];
-	checkedProducts: ProductType[];
+	products: ProductType[];
 };
