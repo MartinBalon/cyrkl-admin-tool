@@ -49,4 +49,8 @@ export interface ProductType {
 
 export type ProductsSliceType = {
 	products: ProductType[];
+	sort: string;
+	display: string;
+	includeHidden: boolean;
+	fraudScan: boolean;
 };

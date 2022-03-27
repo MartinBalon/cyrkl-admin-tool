@@ -13,7 +13,7 @@ export const font = {
 	bold: 700,
 	small: '0.9rem',
 	medium: '1rem',
-	large: '1.2rem',
+	large: '1.1rem',
 };
 
 export const borderRadius = {

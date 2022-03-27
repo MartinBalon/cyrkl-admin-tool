@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import SortBy from 'components/offers/sort-by';
-import Display from 'components/common/display';
-import FraudScan from 'components/common/fraud-scan';
+import Header from 'components/header';
 import OfferList from 'components/offers/offer-list/OfferList';
-
 import { client } from 'API/client';
 import { getAllProducts } from 'store/productsSlices';
 import { RootState } from 'store';
 import { ProductType } from 'types/products';
-
 import { paginate } from 'utils/pagination';
 import { filterAndSortArray } from 'utils/filterAndSortArray';
 
 const OffersPage = () => {
 	const dispatch = useDispatch();
 	const { products } = useSelector((state: RootState) => state.products);
+	const { sort } = useSelector((state: RootState) => state.products);
 	const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
 	const [paginatedProducts, setPagionatedProducts] = useState<ProductType[]>(
 		[]
@@ -25,7 +21,7 @@ const OffersPage = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [display, setDisplay] = useState('all');
 	const [includeHiddenOffers, setIncludeHiddenOffers] = useState(true);
-	const [sortBy, setSortBy] = useState('latest');
+
 	const [fetchingError, setFetchingError] = useState('');
 
 	useEffect(() => {
@@ -42,9 +38,9 @@ const OffersPage = () => {
 
 	useEffect(() => {
 		setFilteredProducts([
-			...filterAndSortArray(products, sortBy, display, includeHiddenOffers),
+			...filterAndSortArray(products, sort, display, includeHiddenOffers),
 		]);
-	}, [products, display, sortBy, includeHiddenOffers]);
+	}, [products, display, sort, includeHiddenOffers]);
 
 	useEffect(() => {
 		setPagionatedProducts([
@@ -54,9 +50,7 @@ const OffersPage = () => {
 
 	return (
 		<>
-			<SortBy />
-			<Display />
-			<FraudScan />
+			<Header />
 			{fetchingError &&
 				'An error has occured during fetching products. Please refresh the page.'}
 			{!fetchingError && paginatedProducts.length > 0 ? (

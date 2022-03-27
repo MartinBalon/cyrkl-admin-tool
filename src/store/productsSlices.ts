@@ -4,6 +4,10 @@ import { ProductsSliceType, ProductType } from 'types/products';
 
 const initialProductsState: ProductsSliceType = {
 	products: [],
+	sort: 'latest',
+	display: 'all',
+	includeHidden: true,
+	fraudScan: false,
 };
 
 export const productsSlice = createSlice({
@@ -13,9 +17,12 @@ export const productsSlice = createSlice({
 		getAllProducts: (state, action: PayloadAction<ProductType[]>) => {
 			state.products = action.payload;
 		},
+		setSort: (state, action: PayloadAction<string>) => {
+			state.sort = action.payload;
+		},
 	},
 });
 
-export const { getAllProducts } = productsSlice.actions;
+export const { getAllProducts, setSort } = productsSlice.actions;
 
 export default productsSlice;
