@@ -28,6 +28,9 @@ export const productsSlice = createSlice({
 		},
 		setFraudScan: state => {
 			state.fraudScan = !state.fraudScan;
+			if (!state.fraudScan) {
+				state.display = DISPLAY_ALL;
+			}
 		},
 	},
 });

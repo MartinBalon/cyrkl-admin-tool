@@ -10,6 +10,7 @@ import { paginate } from 'utils/pagination';
 import { filterAndSortArray } from 'utils/filterAndSortArray';
 import { scanForFraudulentOffers } from 'utils/scanForFraudulentOffers';
 import { DISPLAY_MAX_ITEMS } from 'constants/constants';
+import Pagination from 'components/common/pagination';
 
 const pagination = DISPLAY_MAX_ITEMS;
 
@@ -25,6 +26,7 @@ const OffersPage = () => {
 	);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [fetchingError, setFetchingError] = useState('');
+	const totalPages = Math.ceil(filteredProducts.length / pagination);
 
 	useEffect(() => {
 		client('products').then(
@@ -47,7 +49,11 @@ const OffersPage = () => {
 		setPagionatedProducts([
 			...paginate(filteredProducts, pagination, currentPage),
 		]);
-	}, [filteredProducts]);
+	}, [filteredProducts, currentPage]);
+
+	const onChangePage = (pageNumber: number): void => {
+		setCurrentPage(pageNumber);
+	};
 
 	return (
 		<>
@@ -55,7 +61,14 @@ const OffersPage = () => {
 			{fetchingError &&
 				'An error has occured during fetching products. Please refresh the page.'}
 			{!fetchingError && paginatedProducts.length > 0 ? (
-				<OfferList products={paginatedProducts} />
+				<>
+					<OfferList products={paginatedProducts} />
+					<Pagination
+						totalPages={totalPages}
+						currentPage={currentPage}
+						onChangePage={onChangePage}
+					/>
+				</>
 			) : (
 				<p>loading...</p>
 			)}
