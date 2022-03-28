@@ -43,6 +43,7 @@ const OffersPage = () => {
 		setFilteredProducts([
 			...filterAndSortArray(products, sort, display, includeHidden),
 		]);
+		setCurrentPage(1);
 	}, [products, display, sort, includeHidden]);
 
 	useEffect(() => {
