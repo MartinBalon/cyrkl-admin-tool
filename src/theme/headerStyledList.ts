@@ -13,10 +13,13 @@ export const HeaderListItemTitle = styled.li`
 	color: color.secondaryColor;
 `;
 
-export const HeaderListItem = styled.li<{ active: boolean }>`
+export const HeaderListItem = styled.li<{
+	active: boolean;
+	fraudScanActive?: boolean;
+}>`
 	display: inline;
 	margin: 0 0.6rem;
-	cursor: pointer;
+	cursor: ${props => (props.fraudScanActive ? 'pointer' : null)};
 	color: ${props =>
 		props.active ? color.secondaryColor : color.secondaryColorLight};
 `;

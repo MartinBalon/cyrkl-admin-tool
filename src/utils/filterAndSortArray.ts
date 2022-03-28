@@ -1,4 +1,11 @@
 import { ProductType } from 'types/products';
+import {
+	DATE_LATEST,
+	PRICE_CHEAP,
+	PRICE_EXPENSIVE,
+	DISPLAY_FRAUD,
+	DISPLAY_LEGIT,
+} from 'constants/constants';
 
 export const filterAndSortArray = (
 	array: ProductType[],
@@ -6,17 +13,23 @@ export const filterAndSortArray = (
 	display: string,
 	includeHidden: boolean
 ) => {
-	const filteredAndSortedArray = [...array];
+	let filteredAndSortedArray: ProductType[] = [];
 
-	if (sortBy === 'oldest') {
+	if (!includeHidden) {
+		filteredAndSortedArray = array.filter(offer => !offer.hidden);
+	} else {
+		filteredAndSortedArray = [...array];
+	}
+
+	if (sortBy === DATE_LATEST) {
 		filteredAndSortedArray.sort((a, b) => {
 			return a.timestamp < b.timestamp ? -1 : a.timestamp > b.timestamp ? 1 : 0;
 		});
-	} else if (sortBy === 'most-expensive') {
+	} else if (sortBy === PRICE_EXPENSIVE) {
 		filteredAndSortedArray.sort(
 			(a, b) => parseInt(b.price) - parseInt(a.price)
 		);
-	} else if (sortBy === 'cheapest') {
+	} else if (sortBy === PRICE_CHEAP) {
 		filteredAndSortedArray.sort(
 			(a, b) => parseInt(a.price) - parseInt(b.price)
 		);
@@ -26,16 +39,16 @@ export const filterAndSortArray = (
 		});
 	}
 
-	if (!includeHidden && includeHidden !== undefined) {
-		filteredAndSortedArray.filter(offer => offer.hidden === true);
-	}
-
-	if (display === 'fradulent') {
-		filteredAndSortedArray.filter(offer => offer.fradulent);
-	} else if (display === 'legit') {
-		filteredAndSortedArray.filter(
-			offer => offer.fradulent !== undefined && !offer.fradulent
+	if (display === DISPLAY_FRAUD) {
+		const filteredArray = filteredAndSortedArray.filter(
+			offer => offer.fraudulent
 		);
+		return filteredArray;
+	} else if (display === DISPLAY_LEGIT) {
+		const filteredArray = filteredAndSortedArray.filter(
+			offer => !offer.fraudulent
+		);
+		return filteredArray;
 	}
 
 	return filteredAndSortedArray;

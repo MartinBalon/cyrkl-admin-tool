@@ -7,10 +7,12 @@ import {
 	HeaderListItem,
 	HeaderListItemTitle,
 } from 'theme/headerStyledList';
+import { DISPLAY_FRAUD, DISPLAY_ALL, DISPLAY_LEGIT } from 'constants/constants';
 
 const Display = () => {
 	const { display } = useSelector((state: RootState) => state.products);
 	const { includeHidden } = useSelector((state: RootState) => state.products);
+	const { fraudScan } = useSelector((state: RootState) => state.products);
 	const dispatch = useDispatch();
 
 	return (
@@ -18,20 +20,27 @@ const Display = () => {
 			<HeaderList>
 				<HeaderListItemTitle>Display:</HeaderListItemTitle>
 				<HeaderListItem
-					active={display === 'all'}
-					onClick={() => dispatch(setDisplay('all'))}
+					active={display === DISPLAY_ALL}
+					fraudScanActive={fraudScan}
+					onClick={() => (fraudScan ? dispatch(setDisplay(DISPLAY_ALL)) : null)}
 				>
 					All
 				</HeaderListItem>
 				<HeaderListItem
-					active={display === 'fraud'}
-					onClick={() => dispatch(setDisplay('fraud'))}
+					active={display === DISPLAY_FRAUD}
+					fraudScanActive={fraudScan}
+					onClick={() =>
+						fraudScan ? dispatch(setDisplay(DISPLAY_FRAUD)) : null
+					}
 				>
 					Fraud
 				</HeaderListItem>
 				<HeaderListItem
-					active={display === 'legit'}
-					onClick={() => dispatch(setDisplay('legit'))}
+					active={display === DISPLAY_LEGIT}
+					fraudScanActive={fraudScan}
+					onClick={() =>
+						fraudScan ? dispatch(setDisplay(DISPLAY_LEGIT)) : null
+					}
 				>
 					Legit
 				</HeaderListItem>

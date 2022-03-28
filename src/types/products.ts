@@ -43,7 +43,7 @@ export interface ProductType {
 	language: string;
 	total_view_count: number;
 	hidden?: boolean;
-	fradulent?: boolean;
+	fraudulent?: boolean;
 	reason?: string;
 }
 

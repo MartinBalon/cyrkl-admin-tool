@@ -3,10 +3,16 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Offer from 'components/offers/offer';
 import { mockOffer } from 'mock-data/mockOffer';
+import { Provider } from 'react-redux';
+import store from 'store';
 
 describe('<Offer Componet /> tests', () => {
 	it('should render offer component properly', () => {
-		render(<Offer product={mockOffer} />);
+		render(
+			<Provider store={store}>
+				<Offer product={mockOffer} />
+			</Provider>
+		);
 		expect(screen.queryByText(/Product/i)).toBeInTheDocument();
 		expect(screen.queryByText(/Description/i)).toBeInTheDocument();
 		expect(screen.queryByText(/Price/i)).toBeInTheDocument();

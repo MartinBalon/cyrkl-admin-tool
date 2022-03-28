@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { OfferPropsType } from 'types';
 import {
 	List,
@@ -14,8 +15,11 @@ import ErrorIcon from './icons/warning-icon.svg';
 import DeleteIcon from './icons/delete-icon.png';
 import DetailsIcon from './icons/details-icon.png';
 import HideOfferIcon from './icons/hide-offer-icon.png';
+import { RootState } from 'store';
 
 const Offer = ({ product }: OfferPropsType) => {
+	const { fraudScan } = useSelector((state: RootState) => state.products);
+
 	return (
 		<List>
 			<ListItem width='16%'>
@@ -41,7 +45,11 @@ const Offer = ({ product }: OfferPropsType) => {
 			<ListItem width='22%'>
 				<ListItemTitle>Status:</ListItemTitle>
 				<ListItemDescription>
-					Turn on the fraud scan to see more details.
+					{!fraudScan && 'Turn on the fraud scan to see more details.'}
+					{fraudScan &&
+						product.fraudulent &&
+						`Possibly fradulent: ${product.reason}`}
+					{fraudScan && !product.fraudulent && 'This offer is legitimate.'}
 				</ListItemDescription>
 			</ListItem>
 			<ListItem width='8%'>
@@ -52,19 +60,31 @@ const Offer = ({ product }: OfferPropsType) => {
 					<img src={HideOfferIcon} alt='' />
 				</ListItemDescription>
 			</ListItem>
-			{product.fradulent === undefined && (
+			{!fraudScan && (
 				<StatusIndicator color={color.secondaryColorLight}>
-					<img src={UndefinedIcon} alt='' />
+					<img
+						src={UndefinedIcon}
+						alt=''
+						style={{ height: '2rem', width: '100%' }}
+					/>
 				</StatusIndicator>
 			)}
-			{product.fradulent !== undefined && product.fradulent && (
+			{fraudScan && product.fraudulent && (
 				<StatusIndicator color={color.errorColor}>
-					<img src={ErrorIcon} alt='' />
+					<img
+						src={ErrorIcon}
+						alt=''
+						style={{ height: '2rem', width: '100%' }}
+					/>
 				</StatusIndicator>
 			)}
-			{product.fradulent !== undefined && !product.fradulent && (
+			{fraudScan && !product.fraudulent && (
 				<StatusIndicator color={color.successColor}>
-					<img src={SuccessIcon} alt='' />
+					<img
+						src={SuccessIcon}
+						alt=''
+						style={{ height: '2rem', width: '100%' }}
+					/>
 				</StatusIndicator>
 			)}
 		</List>

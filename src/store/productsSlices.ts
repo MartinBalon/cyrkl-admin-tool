@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 import { ProductsSliceType, ProductType } from 'types/products';
+import { DATE_LATEST, DISPLAY_ALL } from 'constants/constants';
 
 const initialProductsState: ProductsSliceType = {
 	products: [],
-	sort: 'latest',
-	display: 'all',
+	sort: DATE_LATEST,
+	display: DISPLAY_ALL,
 	includeHidden: true,
 	fraudScan: false,
 };

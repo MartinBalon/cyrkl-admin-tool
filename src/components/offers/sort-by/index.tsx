@@ -17,6 +17,7 @@ const SortBy = () => {
 			<HeaderListItemTitle>Sort by:</HeaderListItemTitle>
 			<HeaderListItem
 				active={sort === 'latest' || sort === 'oldest'}
+				fraudScanActive={true}
 				onClick={() =>
 					sort === 'latest'
 						? dispatch(setSort('oldest'))
@@ -27,6 +28,7 @@ const SortBy = () => {
 			</HeaderListItem>
 			<HeaderListItem
 				active={sort === 'most-expensive' || sort === 'cheapest'}
+				fraudScanActive={true}
 				onClick={() =>
 					sort === 'most-expensive'
 						? dispatch(setSort('cheapest'))
