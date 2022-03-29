@@ -28,6 +28,10 @@ const OffersPage = () => {
 	const [fetchingError, setFetchingError] = useState('');
 	const totalPages = Math.ceil(filteredProducts.length / pagination);
 
+	if (totalPages && totalPages < currentPage) {
+		setCurrentPage(prevstate => (prevstate -= 1));
+	}
+
 	useEffect(() => {
 		client('products').then(
 			data => {
@@ -40,10 +44,13 @@ const OffersPage = () => {
 	}, []);
 
 	useEffect(() => {
+		setCurrentPage(1);
+	}, [display, includeHidden]);
+
+	useEffect(() => {
 		setFilteredProducts([
 			...filterAndSortArray(products, sort, display, includeHidden),
 		]);
-		setCurrentPage(1);
 	}, [products, display, sort, includeHidden]);
 
 	useEffect(() => {

@@ -17,6 +17,17 @@ export const productsSlice = createSlice({
 		getAllProducts: (state, action: PayloadAction<ProductType[]>) => {
 			state.products = action.payload;
 		},
+		deleteProduct: (state, action: PayloadAction<number>) => {
+			state.products = state.products.filter(
+				product => product.id !== action.payload
+			);
+		},
+		toggleProduct: (state, action: PayloadAction<number>) => {
+			state.products.find(
+				product =>
+					product.id === action.payload && (product.hidden = !product.hidden)
+			);
+		},
 		setSort: (state, action: PayloadAction<string>) => {
 			state.sort = action.payload;
 		},
@@ -37,6 +48,8 @@ export const productsSlice = createSlice({
 
 export const {
 	getAllProducts,
+	deleteProduct,
+	toggleProduct,
 	setSort,
 	setDisplay,
 	setIncludeHidden,

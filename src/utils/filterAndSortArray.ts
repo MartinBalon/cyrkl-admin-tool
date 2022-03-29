@@ -1,10 +1,10 @@
 import { ProductType } from 'types/products';
 import {
-	DATE_LATEST,
 	PRICE_CHEAP,
 	PRICE_EXPENSIVE,
 	DISPLAY_FRAUD,
 	DISPLAY_LEGIT,
+	DATE_OLDEST,
 } from 'constants/constants';
 
 export const filterAndSortArray = (
@@ -21,7 +21,7 @@ export const filterAndSortArray = (
 		filteredAndSortedArray = [...array];
 	}
 
-	if (sortBy === DATE_LATEST) {
+	if (sortBy === DATE_OLDEST) {
 		filteredAndSortedArray.sort((a, b) => {
 			return a.timestamp < b.timestamp ? -1 : a.timestamp > b.timestamp ? 1 : 0;
 		});

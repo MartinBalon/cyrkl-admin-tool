@@ -9,3 +9,16 @@ export type PaginationProps = {
 	currentPage: number;
 	onChangePage: (pageNumber: number) => void;
 };
+
+export type OnClickHandlerProps = {
+	onClickHandler: () => void;
+};
+
+export type ItemActionProps = {
+	itemId: number;
+	type: string;
+};
+
+export type ToggleOfferProps = {
+	offer: ProductType;
+};

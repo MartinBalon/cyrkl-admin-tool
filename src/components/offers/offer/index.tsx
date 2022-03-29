@@ -1,6 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from 'store';
 import { OfferPropsType } from 'types';
+import DeleteItem from 'components/common/item-delete';
+import UndefinedIcon from './icons/undefined-icon.svg';
+import SuccessIcon from './icons/tick-icon.svg';
+import ErrorIcon from './icons/warning-icon.svg';
+import DetailItem from 'components/common/item-detail';
+import ToggleOffer from 'components/offers/toggle-offer';
+import { color } from 'theme';
 import {
 	List,
 	ListItem,
@@ -8,14 +16,6 @@ import {
 	ListItemDescription,
 	StatusIndicator,
 } from './styled';
-import { color } from 'theme';
-import UndefinedIcon from './icons/undefined-icon.svg';
-import SuccessIcon from './icons/tick-icon.svg';
-import ErrorIcon from './icons/warning-icon.svg';
-import DeleteIcon from './icons/delete-icon.png';
-import DetailsIcon from './icons/details-icon.png';
-import HideOfferIcon from './icons/hide-offer-icon.png';
-import { RootState } from 'store';
 
 const Offer = ({ product }: OfferPropsType) => {
 	const { fraudScan } = useSelector((state: RootState) => state.products);
@@ -55,9 +55,13 @@ const Offer = ({ product }: OfferPropsType) => {
 			<ListItem width='8%'>
 				<ListItemTitle>Actions:</ListItemTitle>
 				<ListItemDescription>
-					<img src={DetailsIcon} alt='' />
-					<img src={DeleteIcon} alt='' />
-					<img src={HideOfferIcon} alt='' />
+					<DetailItem
+						onClickHandler={() =>
+							console.log('redirect product: ' + product.id)
+						}
+					/>
+					<DeleteItem itemId={product.id} type={'offer'} />
+					<ToggleOffer offer={product} />
 				</ListItemDescription>
 			</ListItem>
 			{!fraudScan && (

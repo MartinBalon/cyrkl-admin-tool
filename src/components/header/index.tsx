@@ -1,6 +1,6 @@
 import React from 'react';
-import Display from 'components/common/display';
-import FraudScan from 'components/common/fraud-scan';
+import Display from 'components/offers/display';
+import FraudScan from 'components/offers/fraud-scan';
 import SortBy from 'components/offers/sort-by';
 import { StyledHeader } from './styled';
 

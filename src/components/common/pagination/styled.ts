@@ -21,4 +21,5 @@ export const PaginationListItem = styled.li<{ active: boolean }>`
 		props.active ? color.secondaryColor : color.secondaryColorLight};
 	margin: 0 0.1rem;
 	padding: 0;
+	cursor: ${props => (props.active ? 'default' : 'pointer')};
 `;
