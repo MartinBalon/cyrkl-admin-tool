@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Header from 'components/header';
+import OffersHeader from 'components/offers/offers-header';
 import OfferList from 'components/offers/offer-list/OfferList';
+import Loader from 'components/common/loader';
 import { client } from 'API/client';
 import { getAllProducts } from 'store/productsSlices';
 import { RootState } from 'store';
@@ -24,9 +25,9 @@ const OffersPage = () => {
 	const [paginatedProducts, setPagionatedProducts] = useState<ProductType[]>(
 		[]
 	);
-	const [currentPage, setCurrentPage] = useState(1);
 	const [fetchingError, setFetchingError] = useState('');
 	const totalPages = Math.ceil(filteredProducts.length / pagination);
+	const [currentPage, setCurrentPage] = useState(1);
 
 	if (totalPages && totalPages < currentPage) {
 		setCurrentPage(prevstate => (prevstate -= 1));
@@ -65,7 +66,7 @@ const OffersPage = () => {
 
 	return (
 		<>
-			<Header />
+			<OffersHeader />
 			{fetchingError &&
 				'An error has occured during fetching products. Please refresh the page.'}
 			{!fetchingError && paginatedProducts.length > 0 ? (
@@ -78,7 +79,7 @@ const OffersPage = () => {
 					/>
 				</>
 			) : (
-				<p>loading...</p>
+				<Loader />
 			)}
 		</>
 	);

@@ -1,6 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import Offer from 'components/offers/offer';
 import { mockOffer } from 'mock-data/mockOffer';
 import { Provider } from 'react-redux';
@@ -10,7 +11,9 @@ describe('<Offer Componet /> tests', () => {
 	it('should render offer component properly', () => {
 		render(
 			<Provider store={store}>
-				<Offer product={mockOffer} />
+				<BrowserRouter>
+					<Offer product={mockOffer} />
+				</BrowserRouter>
 			</Provider>
 		);
 		expect(screen.queryByText(/Product/i)).toBeInTheDocument();

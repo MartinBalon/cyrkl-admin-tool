@@ -4,7 +4,7 @@ import FraudScan from 'components/offers/fraud-scan';
 import SortBy from 'components/offers/sort-by';
 import { StyledHeader } from './styled';
 
-const Header = () => {
+const OffersHeader = () => {
 	return (
 		<StyledHeader>
 			<SortBy />
@@ -14,4 +14,4 @@ const Header = () => {
 	);
 };
 
-export default Header;
+export default OffersHeader;

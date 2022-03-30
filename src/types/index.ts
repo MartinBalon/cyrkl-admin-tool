@@ -10,11 +10,11 @@ export type PaginationProps = {
 	onChangePage: (pageNumber: number) => void;
 };
 
-export type OnClickHandlerProps = {
-	onClickHandler: () => void;
+export type ItemDetailProps = {
+	itemId: number;
 };
 
-export type ItemActionProps = {
+export type DeleteItemProps = {
 	itemId: number;
 	type: string;
 };

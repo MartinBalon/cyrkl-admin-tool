@@ -1,16 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import DetailIcon from './img/details-icon.png';
 import { actionIconsStyle } from 'theme/actionIcons';
-import { OnClickHandlerProps } from 'types';
+import { ItemDetailProps } from 'types';
 
-const DetailItem = ({ onClickHandler }: OnClickHandlerProps) => {
+const DetailItem = ({ itemId }: ItemDetailProps) => {
 	return (
-		<img
-			src={DetailIcon}
-			alt='detail'
-			style={actionIconsStyle}
-			onClick={onClickHandler}
-		/>
+		<Link to={`/offers/offer/${itemId}`}>
+			<img src={DetailIcon} alt='detail' style={actionIconsStyle} />
+		</Link>
 	);
 };
 

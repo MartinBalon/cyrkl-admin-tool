@@ -55,11 +55,7 @@ const Offer = ({ product }: OfferPropsType) => {
 			<ListItem width='8%'>
 				<ListItemTitle>Actions:</ListItemTitle>
 				<ListItemDescription>
-					<DetailItem
-						onClickHandler={() =>
-							console.log('redirect product: ' + product.id)
-						}
-					/>
+					<DetailItem itemId={product.id} />
 					<DeleteItem itemId={product.id} type={'offer'} />
 					<ToggleOffer offer={product} />
 				</ListItemDescription>
