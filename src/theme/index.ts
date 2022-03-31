@@ -24,3 +24,18 @@ export const borderRadius = {
 export const boxShadow = {
 	primaryShadow: '0 5px 10px 0px rgba(20,20,20,.1)',
 };
+
+export const appWrapper = {
+	border: 'none',
+	borderRadius: borderRadius.secondaryRadius,
+	width: '93.75rem',
+	height: '51.25rem',
+	overflow: 'hidden',
+	position: 'absolute',
+	top: '50%',
+	left: '50%',
+	marginTop: '-25.625rem',
+	marginLeft: '-46.875rem',
+	padding: '2rem',
+	boxShadow: boxShadow.primaryShadow,
+};

@@ -16,9 +16,13 @@ export type ItemDetailProps = {
 
 export type DeleteItemProps = {
 	itemId: number;
-	type: string;
 };
 
 export type ToggleOfferProps = {
 	offer: ProductType;
+};
+
+export type ConfirmModalProps = {
+	message: string;
+	onclick: (arg: boolean) => void;
 };

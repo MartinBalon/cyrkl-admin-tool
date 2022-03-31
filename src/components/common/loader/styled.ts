@@ -1,11 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { color } from 'theme';
 
-export const LoaderWrapper = styled.div`
-	height: 50vh;
-	position: relative;
-`;
-
 const Animation = keyframes`  
   0% {
     opacity: 1;

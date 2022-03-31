@@ -34,6 +34,13 @@ export const ListItemDescription = styled.p`
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+`;
+
+export const ListItemActions = styled.div`
+	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	img {
 		max-width: 25px;
 		height: 21px;

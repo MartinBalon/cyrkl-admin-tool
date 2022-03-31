@@ -15,6 +15,7 @@ import {
 	ListItemTitle,
 	ListItemDescription,
 	StatusIndicator,
+	ListItemActions,
 } from './styled';
 
 const Offer = ({ product }: OfferPropsType) => {
@@ -26,22 +27,27 @@ const Offer = ({ product }: OfferPropsType) => {
 				<ListItemTitle>Product:</ListItemTitle>
 				<ListItemDescription>{product.name0}</ListItemDescription>
 			</ListItem>
+
 			<ListItem width='30%'>
 				<ListItemTitle>Description:</ListItemTitle>
 				<ListItemDescription>{product.perex0}</ListItemDescription>
 			</ListItem>
+
 			<ListItem width='6%'>
 				<ListItemTitle>Price:</ListItemTitle>
 				<ListItemDescription>{`${product.price} ${product.currency}`}</ListItemDescription>
 			</ListItem>
+
 			<ListItem width='10%'>
 				<ListItemTitle>Added:</ListItemTitle>
 				<ListItemDescription>{product.timestamp}</ListItemDescription>
 			</ListItem>
+
 			<ListItem width='6%'>
 				<ListItemTitle>Country:</ListItemTitle>
 				<ListItemDescription>{product.country}</ListItemDescription>
 			</ListItem>
+
 			<ListItem width='22%'>
 				<ListItemTitle>Status:</ListItemTitle>
 				<ListItemDescription>
@@ -52,14 +58,16 @@ const Offer = ({ product }: OfferPropsType) => {
 					{fraudScan && !product.fraudulent && 'This offer is legitimate.'}
 				</ListItemDescription>
 			</ListItem>
+
 			<ListItem width='8%'>
 				<ListItemTitle>Actions:</ListItemTitle>
-				<ListItemDescription>
+				<ListItemActions>
 					<DetailItem itemId={product.id} />
-					<DeleteItem itemId={product.id} type={'offer'} />
+					<DeleteItem itemId={product.id} />
 					<ToggleOffer offer={product} />
-				</ListItemDescription>
+				</ListItemActions>
 			</ListItem>
+
 			{!fraudScan && (
 				<StatusIndicator color={color.secondaryColorLight}>
 					<img

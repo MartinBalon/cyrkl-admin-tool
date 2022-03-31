@@ -36,6 +36,7 @@ const OfferDetail = () => {
 			>
 				Go back
 			</Link>
+
 			{!imgLoaded && (
 				<LoaderWrapper>
 					<Loader />

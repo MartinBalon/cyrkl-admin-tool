@@ -7,7 +7,12 @@ import { ItemDetailProps } from 'types';
 const DetailItem = ({ itemId }: ItemDetailProps) => {
 	return (
 		<Link to={`/offers/offer/${itemId}`}>
-			<img src={DetailIcon} alt='detail' style={actionIconsStyle} />
+			<img
+				src={DetailIcon}
+				alt='detail'
+				style={actionIconsStyle}
+				title='Offer Detail'
+			/>
 		</Link>
 	);
 };
