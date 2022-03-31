@@ -1,3 +1,13 @@
+# Cyrkl Admin Tool
+
+## This is only for demonstration purposes.
+
+Cyrkl admin tool is a web app for scanning potentially fraudulent offers created by scammers who have nothing better to do than stealing from law-abiding citizens. This app will show which offers might be hazardous and gives you full control over them - you can delete and hide these offers so our precious customers won't come to any financial harm.
+
+## Technology used:
+
+React, Redux, Redux Toolkit, Typescript, React Router V6, React Testing Library, and Styled Components.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
