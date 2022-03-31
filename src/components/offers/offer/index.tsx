@@ -9,6 +9,7 @@ import ErrorIcon from './icons/warning-icon.svg';
 import DetailItem from 'components/common/item-detail';
 import ToggleOffer from 'components/offers/toggle-offer';
 import { color } from 'theme';
+import { ConvertIsoDate } from 'utils/convertIsoDate';
 import {
 	List,
 	ListItem,
@@ -40,7 +41,9 @@ const Offer = ({ product }: OfferPropsType) => {
 
 			<ListItem width='10%'>
 				<ListItemTitle>Added:</ListItemTitle>
-				<ListItemDescription>{product.timestamp}</ListItemDescription>
+				<ListItemDescription>
+					{ConvertIsoDate(new Date(product.timestamp))}
+				</ListItemDescription>
 			</ListItem>
 
 			<ListItem width='6%'>
